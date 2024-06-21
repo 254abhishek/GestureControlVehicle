@@ -1,36 +1,35 @@
-# Arduino Remote Controlled Robot using Joystick and HT12E
+# Gesture-Controlled Vehicle with Hand Alignment
 
-This Arduino sketch enables control of a robot using a joystick connected to analog pins and outputs signals through an HT12E encoder IC.
+This Arduino sketch enables control of a vehicle using hand gestures for directional movements, utilizing an analog sensor to detect hand alignment.
 
 ## Table of Contents
 
 - [Overview](#overview)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Joystick Control](#joystick-control)
-- [HT12E Output](#ht12e-output)
+- [Components Required](#components-required)
+- [Wiring Diagram](#wiring-diagram)
+- [Gesture Recognition](#gesture-recognition)
 - [License](#license)
 
 ## Overview
 
-This project utilizes an Arduino board to interpret joystick movements from analog pins and encode them using an HT12E encoder IC. The encoded signals control the robot's movements, allowing it to move forward, backward, left, and right based on the joystick's position.
+This project utilizes an Arduino board and an analog sensor to recognize hand gestures for controlling a vehicle's movements:
+- **Forward**
+- **Backward**
+- **Left**
+- **Right**
+- **Stop**
+
+The vehicle's direction is determined by interpreting hand alignment relative to the analog sensor's position.
 
 ## Setup
 
 ### Components Required
 - Arduino board (e.g., Arduino Uno)
-- Joystick module
-- HT12E encoder IC
-- Motor driver circuitry and motors
-
-### Wiring Diagram
-- **Joystick Connections**:
-  - `xPin` (Analog Pin A0) connected to the X-axis output of the joystick.
-  - `yPin` (Analog Pin A1) connected to the Y-axis output of the joystick.
-- **HT12E Outputs**:
-  - `out1` to `out4` connected to the inputs of the HT12E encoder IC.
-- **Motor Driver Connections**:
-  - Outputs of the HT12E encoder IC connected to the motor driver circuitry controlling the robot's motors.
+- Analog sensor (e.g., flex sensor, light-dependent resistor, etc.)
+- Motor driver module (if using motors)
+- DC motors (if applicable)
 
 ### Arduino IDE Setup
 1. Connect your Arduino board to your computer.
@@ -40,25 +39,38 @@ This project utilizes an Arduino board to interpret joystick movements from anal
 
 ## Usage
 
-1. **Power on your Arduino board and the robot setup**.
-2. **Operate the joystick** to control the robot's movements:
-   - Move the joystick forward for the robot to move forward.
-   - Move the joystick backward for the robot to move backward.
-   - Move the joystick left for the robot to turn left.
-   - Move the joystick right for the robot to turn right.
-   - Release the joystick to stop the robot (`STOP` condition).
-   
-3. **Observe** the outputs (`out1` to `out4`) changing based on joystick movements, which are then fed into the HT12E encoder IC to control the motors accordingly.
+1. **Power on your Arduino board and the vehicle setup**.
+2. **Gesture Recognition**:
+   - Align your hand or fingers with the analog sensor to control the vehicle:
+     - **Forward**: Align your hand/fingers in a way that corresponds to moving forward.
+     - **Backward**: Align your hand/fingers in a way that corresponds to moving backward.
+     - **Left**: Align your hand/fingers in a way that corresponds to turning left.
+     - **Right**: Align your hand/fingers in a way that corresponds to turning right.
+     - **Stop**: Move your hand/fingers away from the sensor to stop.
 
-## Joystick Control
+3. **Observe** how the vehicle responds to your hand gestures, activating the corresponding motor outputs based on the sensor readings.
 
-- The joystick's X and Y positions are read using analog inputs (`xPin` and `yPin`).
-- Based on the joystick's position, the Arduino board determines the direction in which the robot should move.
+## Components Required
 
-## HT12E Output
+- **Arduino Board**: Controls the logic and interprets sensor inputs.
+- **Analog Sensor**: Detects hand alignment or gestures.
+- **Motor Driver Module**: Translates Arduino's digital signals into motor control signals.
+- **DC Motors**: Executes movements based on motor control signals.
 
-- `out1` to `out4` are digital outputs used to transmit control signals to the HT12E encoder IC.
-- These outputs encode directional commands (forward, backward, left, right, stop) from the Arduino based on joystick movements.
+## Wiring Diagram
+
+- **Analog Sensor Connections**:
+  - Connect the analog sensor to an analog input pin on the Arduino board.
+
+- **Motor Driver Connections**:
+  - Connect motor driver outputs (`out1`, `out2`, `out3`, `out4`) to the respective motor terminals.
+
+Ensure proper connections and alignment calibration as per your specific sensor and hardware setup to ensure accurate gesture recognition and vehicle control.
+
+## Gesture Recognition
+
+- The sketch includes logic to interpret analog sensor readings and map them to specific vehicle movements.
+- Adjust threshold values or sensor positioning as needed to improve gesture recognition accuracy.
 
 ## License
 
