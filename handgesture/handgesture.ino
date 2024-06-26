@@ -3,7 +3,7 @@ int yPin=A1;
 int out1=8; //output1 for HT12E IC
 int out2=9; //output1 for HT12E IC
 int out3=10; //output1 for HT12E IC
-int out4=11; //output1 for HT12E IC
+int out4=11; //output1 for HT12E IC.
 void setup(){
 pinMode(xPin,INPUT);
 pinMode(yPin,INPUT);
