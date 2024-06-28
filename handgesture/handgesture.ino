@@ -17,7 +17,7 @@ void loop()
 {
 int xval=analogRead(xPin);
 int yval=analogRead(yPin);
-if ((xval>294 && xval<340) && (yval>294 && yval<340)) //stop
+if ((xval>294 && xval<340) && (yval>294 && yval<340)) //stop.
 {
 digitalWrite(out1,LOW);
 digitalWrite(out2,LOW);
